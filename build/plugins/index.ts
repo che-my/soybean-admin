@@ -10,6 +10,7 @@ import mock from './mock';
 import visualizer from './visualizer';
 import compress from './compress';
 import pwa from './pwa';
+import createPrismjs from './prismjs';
 
 /**
  * vite插件
@@ -27,6 +28,7 @@ export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | Plugin
     ...unplugin(viteEnv),
     unocss(),
     mock(viteEnv),
+    createPrismjs(),
     progress()
   ];
 
@@ -36,9 +38,11 @@ export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | Plugin
   if (viteEnv.VITE_COMPRESS === 'Y') {
     plugins.push(compress(viteEnv));
   }
+
   if (viteEnv.VITE_PWA === 'Y' || viteEnv.VITE_VERCEL === 'Y') {
     plugins.push(pwa());
   }
+
   if (viteEnv.VITE_SOYBEAN_ROUTE_PLUGIN === 'Y') {
     plugins.push(pageRoute());
   }

@@ -11,8 +11,8 @@
       <header class="header-height flex-y-center justify-between" :style="{ height: theme.header.height + 'px' }">
         <h2 class="text-primary pl-8px text-16px font-bold">{{ $t('system.title') }}</h2>
         <div class="px-8px text-16px text-gray-600 cursor-pointer" @click="app.toggleMixSiderFixed">
-          <icon-mdi-pin-off v-if="app.mixSiderFixed" />
-          <icon-mdi-pin v-else />
+          <svg-icon v-if="app.mixSiderFixed" icon="mdi:pin-off" />
+          <svg-icon icon="mdi:pin" />
         </div>
       </header>
       <n-scrollbar class="flex-1-hidden">

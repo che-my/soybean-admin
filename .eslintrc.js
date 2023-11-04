@@ -19,6 +19,24 @@ module.exports = {
     'import/core-modules': ['uno.css', '~icons/*', 'virtual:svg-icons-register']
   },
   rules: {
+    '@typescript-eslint/default-param-last': 'warn',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-shadow': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    eqeqeq: 'off',
+    'no-constant-binary-expression': 'off',
+    'no-unused-expressions': 'off',
+    'no-underscore-dangle': 'off',
+    'no-multi-assign': 'off',
+    'vue/valid-v-for': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/no-dupe-keys': 'off',
+    'consistent-return': 'off',
+    'no-bitwise': 'off',
+    'no-param-reassign': 'off',
+    'no-plusplus': 'off',
+    'no-console': 'off',
+    'max-params': 'off',
     'import/order': [
       'error',
       {
@@ -117,6 +135,11 @@ module.exports = {
           },
           {
             pattern: '@/assets',
+            group: 'internal',
+            position: 'before'
+          },
+          {
+            pattern: '@/naive',
             group: 'internal',
             position: 'before'
           },

@@ -6,10 +6,11 @@ import { constantRoutes } from './routes';
 import { scrollBehavior } from './helpers';
 import { createRouterGuard } from './guard';
 
-const { VITE_HASH_ROUTE = 'N', VITE_BASE_URL } = import.meta.env;
+const baseUrl: string = window.appConfig?.baseUrl || '/';
+const isHash: boolean = window.appConfig?.isHash || false;
 
 export const router = createRouter({
-  history: VITE_HASH_ROUTE === 'Y' ? createWebHashHistory(VITE_BASE_URL) : createWebHistory(VITE_BASE_URL),
+  history: isHash ? createWebHashHistory(baseUrl) : createWebHistory(baseUrl),
   routes: transformAuthRouteToVueRoutes(constantRoutes),
   scrollBehavior
 });

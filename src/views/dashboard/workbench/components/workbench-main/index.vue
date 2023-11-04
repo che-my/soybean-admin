@@ -19,7 +19,7 @@
           <n-list>
             <n-list-item v-for="item in activity" :key="item.id">
               <template #prefix>
-                <icon-local-avatar class="text-48px" />
+                <svg-icon local-icon="avatar" class="text-48px" />
               </template>
               <n-thing :title="item.content" :description="item.time" />
             </n-list-item>
@@ -38,7 +38,7 @@
         </n-card>
         <n-card title="创意" :bordered="false" size="small" class="rounded-8px shadow-sm">
           <div class="flex-center h-380px">
-            <icon-local-banner class="text-400px sm:text-320px text-primary" />
+            <svg-icon local-icon="banner" class="text-400px sm:text-320px text-primary" />
           </div>
         </n-card>
       </n-space>

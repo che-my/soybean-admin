@@ -2,6 +2,7 @@ import { nextTick } from 'vue';
 import { defineStore } from 'pinia';
 import type { Socket } from 'socket.io-client';
 import { LAYOUT_SCROLL_EL_ID } from '@soybeanjs/vue-materials';
+import type { EntryOptions } from '@/naive/types';
 
 interface AppState {
   /** 滚动元素的id */
@@ -20,7 +21,18 @@ interface AppState {
   mixSiderFixed: boolean;
   /** socket.io 实例 */
   socket: Socket | null;
+  headerOptions: EntryOptions;
 }
+
+const headerOptions = {
+  scope: {},
+  schema: {},
+  components: {},
+  locale: '',
+  messages: {},
+  maps: [],
+  packages: []
+} as unknown as EntryOptions;
 
 export const useAppStore = defineStore('app-store', {
   state: (): AppState => ({
@@ -31,7 +43,8 @@ export const useAppStore = defineStore('app-store', {
     settingDrawerVisible: false,
     siderCollapse: false,
     mixSiderFixed: false,
-    socket: null
+    socket: null,
+    headerOptions
   }),
   actions: {
     /**
@@ -105,6 +118,11 @@ export const useAppStore = defineStore('app-store', {
     /** 设置socket实例 */
     setSocket<T extends Socket = Socket>(socket: T) {
       this.socket = socket;
+    },
+    /** 设置头部组件信息 */
+    setHeaderOptions(options: EntryOptions) {
+      // @ts-ignore
+      this.headerOptions = options;
     }
   }
 });

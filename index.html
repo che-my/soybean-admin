@@ -6,6 +6,17 @@
 		<link rel="icon" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>%VITE_APP_NAME%</title>
+		<script src="http://laravel.org/vendor/admin/libs/vue3-sfc-loader/vue3-sfc-loader.js"></script>
+		<script type="module">
+			window.appConfig = {
+				baseUrl: "admin",
+				debug: true,
+				isHash: false,
+				route: { login_path: "/login/pwd-login", home_path: "/dashboard/home" },
+				axiosConfig: { baseURL: "/admin-api" },
+				themeConfig: { darkMode: false, followSystemTheme: true },
+			};
+		</script>
 	</head>
 	<body>
 		<div id="app">

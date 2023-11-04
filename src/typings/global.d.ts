@@ -1,8 +1,14 @@
 interface Window {
+  Vue: typeof import('vue');
+  TMap: any;
+  appConfig: import('@/naive/types').AppConfig;
   $loadingBar?: import('naive-ui').LoadingBarProviderInst;
   $dialog?: import('naive-ui').DialogProviderInst;
   $message?: import('naive-ui').MessageProviderInst;
   $notification?: import('naive-ui').NotificationProviderInst;
+  'vue3-sfc-loader': typeof import('vue3-sfc-loader/dist/types/vue3/index');
+  appRender(dom: string, callback?: ADMIN.AppCallback): Promise<void>;
+  useScope(): import('@/naive/hook').Scope;
 }
 
 interface ViewTransition {
@@ -23,6 +29,10 @@ declare namespace Common {
 
   /** 选项数据 */
   type OptionWithKey<K> = { value: K; label: string };
+}
+
+declare namespace ADMIN {
+  type AppCallback = (app: import('vue').App) => void;
 }
 
 /** 构建时间 */

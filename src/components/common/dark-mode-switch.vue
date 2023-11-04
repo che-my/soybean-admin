@@ -1,7 +1,7 @@
 <template>
   <div class="flex-center text-18px cursor-pointer" @click="handleSwitch">
-    <icon-mdi-moon-waning-crescent v-if="darkMode" />
-    <icon-mdi-white-balance-sunny v-else />
+    <svg-icon v-if="darkMode" icon="mdi:moon-waning-crescent"></svg-icon>
+    <svg-icon v-else icon="mdi:white-balance-sunny"></svg-icon>
   </div>
 </template>
 

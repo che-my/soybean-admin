@@ -1,3 +1,4 @@
+import { request } from '@/naive/api';
 import { mockRequest } from '../request';
 
 /**
@@ -9,18 +10,23 @@ export function fetchSmsCode(phone: string) {
   return mockRequest.post<boolean>('/getSmsCode', { phone });
 }
 
+/** 获取CsrfCookie */
+export function fetchCsrfCookie() {
+  return request.get('/sanctum/csrf-cookie');
+}
+
 /**
  * 登录
  * @param userName - 用户名
  * @param password - 密码
  */
 export function fetchLogin(userName: string, password: string) {
-  return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
+  return request.post<ApiAuth.Token>('/login', { userName, password });
 }
 
 /** 获取用户信息 */
 export function fetchUserInfo() {
-  return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
+  return request.get<ApiAuth.UserInfo>('/getUserInfo');
 }
 
 /**
@@ -29,7 +35,7 @@ export function fetchUserInfo() {
  * @description 后端根据用户id查询到对应的角色类型，并将路由筛选出对应角色的路由数据返回前端
  */
 export function fetchUserRoutes(userId: string) {
-  return mockRequest.post<ApiRoute.Route>('/getUserRoutes', { userId });
+  return request.post<ApiRoute.Route>('/getUserRoutes', { userId });
 }
 
 /**
@@ -37,5 +43,5 @@ export function fetchUserRoutes(userId: string) {
  * @param refreshToken
  */
 export function fetchUpdateToken(refreshToken: string) {
-  return mockRequest.post<ApiAuth.Token>('/updateToken', { refreshToken });
+  return request.post<ApiAuth.Token>('/updateToken', { refreshToken });
 }

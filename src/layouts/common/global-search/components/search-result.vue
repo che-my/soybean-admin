@@ -15,7 +15,7 @@
           <span class="flex-1 ml-5px">
             {{ (item.meta?.i18nTitle && $t(item.meta?.i18nTitle)) || item.meta?.title }}
           </span>
-          <icon-ant-design-enter-outlined class="icon text-20px p-2px mr-3px" />
+          <svg-icon icon="ant-design:enter-outlined" class="icon text-20px p-2px mr-3px" />
         </div>
       </template>
     </div>

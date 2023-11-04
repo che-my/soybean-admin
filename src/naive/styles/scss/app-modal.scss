@@ -1,0 +1,39 @@
+.app-modal {
+	position: relative;
+	--n-padding: 0 !important;
+	border-radius: 5px;
+	max-width: 100vw;
+	max-height: 100vh;
+	width: var(---modal-width);
+	top: var(---modal-top);
+	&.is-fullscreen {
+		transform: translate3d(0px, 0px, 0px) !important;
+	}
+	.n-card-header {
+		padding: 8px 12px;
+		cursor: var(---modal-cursor);
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		box-shadow: 0 1px 1px #e5e5e5;
+	}
+	.n-card__content {
+		padding: 0;
+		max-width: 100vw;
+		//height: calc(100% - 99px);
+	}
+	.modal-content {
+		padding: 15px;
+		box-sizing: border-box;
+		height: 100%;
+	}
+	.n-card__action {
+		padding: 10px 16px !important;
+	}
+	.modal-content-scrollbar {
+		height: 100%;
+		max-height: calc(100vh - 99px);
+		.n-scrollbar-content {
+			height: 100%;
+		}
+	}
+}

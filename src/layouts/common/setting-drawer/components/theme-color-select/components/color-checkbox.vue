@@ -1,6 +1,6 @@
 <template>
   <div class="flex-center w-20px h-20px rounded-2px shadow cursor-pointer" :style="{ backgroundColor: color }">
-    <icon-ic-outline-check v-if="checked" :class="[iconClass, isWhite ? 'text-gray-700' : 'text-white']" />
+    <svg-icon v-if="checked" icon="ic:outline-check" :class="[iconClass, isWhite ? 'text-gray-700' : 'text-white']" />
   </div>
 </template>
 

@@ -1,3 +1,11 @@
+/// <reference types="vite/client" />
+
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<NonNullable<unknown>, NonNullable<unknown>, any>;
+  export default component;
+}
+
 /**
  *后台服务的环境类型
  * - dev: 后台开发环境
@@ -10,6 +18,7 @@ type ServiceEnvType = 'dev' | 'test' | 'prod';
 interface ServiceEnvConfig {
   /** 请求地址 */
   url: string;
+  domain?: string;
 }
 
 interface ServiceEnvConfigWithProxyPattern extends ServiceEnvConfig {
@@ -19,7 +28,8 @@ interface ServiceEnvConfigWithProxyPattern extends ServiceEnvConfig {
    * - 和后端请求地址的前缀无关
    * - 有多个后端请求实例时，需要创建不同的值
    */
-  proxyPattern: '/proxy-pattern';
+  proxyPattern: '/admin-api';
+  staticPattern: '/static';
 }
 
 interface ImportMetaEnv {

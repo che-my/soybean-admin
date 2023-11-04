@@ -2,7 +2,7 @@
   <n-popover placement="bottom" trigger="click">
     <template #trigger>
       <n-button size="small" type="primary">
-        <icon-ant-design-setting-outlined class="mr-4px text-16px" />
+        <svg-icon icon="ant-design:setting-outlined" class="mr-4px text-16px" />
         表格列设置
       </n-button>
     </template>
@@ -10,7 +10,7 @@
       <vue-draggable v-model="list" item-key="key">
         <template #item="{ element }">
           <div v-if="element.key" class="flex-y-center h-36px px-12px hover:bg-primary_active">
-            <icon-mdi-drag class="mr-8px text-20px cursor-move" />
+            <svg-icon icon="mdi:drag" class="mr-8px text-20px cursor-move" />
             <n-checkbox v-model:checked="element.checked">
               {{ element.title }}
             </n-checkbox>

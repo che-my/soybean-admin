@@ -1,7 +1,7 @@
 <template>
   <n-dropdown :options="options" @select="handleDropdown">
     <hover-container class="px-12px" :inverted="theme.header.inverted">
-      <icon-local-avatar class="text-32px" />
+      <svg-icon local-icon="avatar" class="text-32px"></svg-icon>
       <span class="pl-8px text-16px font-medium">{{ auth.userInfo.userName }}</span>
     </hover-container>
   </n-dropdown>

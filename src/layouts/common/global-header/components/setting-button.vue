@@ -5,7 +5,7 @@
     :inverted="theme.header.inverted"
     @click="app.toggleSettingDrawerVisible"
   >
-    <icon-ant-design-setting-outlined class="text-20px" />
+    <svg-icon icon="ant-design:setting-outlined" class="text-20px"></svg-icon>
   </hover-container>
 </template>
 

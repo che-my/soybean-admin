@@ -8,11 +8,10 @@
     <header-menu v-else />
     <div class="flex justify-end h-full">
       <global-search />
-      <github-site />
       <full-screen />
       <theme-mode />
       <toggle-lang />
-      <system-message />
+      <vue-render :options="options"></vue-render>
       <setting-button v-if="showButton" />
       <user-avatar />
     </div>
@@ -20,18 +19,18 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from '@/store';
+import { computed } from 'vue';
+import { useThemeStore, useAppStore } from '@/store';
 import { useBasicLayout } from '@/composables';
+import VueRender from '@/naive/components/render/vue-render.vue';
 import GlobalLogo from '../global-logo/index.vue';
 import GlobalSearch from '../global-search/index.vue';
 import {
   FullScreen,
-  GithubSite,
   GlobalBreadcrumb,
   HeaderMenu,
   MenuCollapse,
   SettingButton,
-  SystemMessage,
   ThemeMode,
   UserAvatar,
   ToggleLang
@@ -54,6 +53,9 @@ const theme = useThemeStore();
 const { isMobile } = useBasicLayout();
 
 const showButton = import.meta.env.PROD && import.meta.env.VITE_VERCEL !== 'Y';
+const app = useAppStore();
+
+const options = computed(() => app.headerOptions);
 </script>
 
 <style scoped>

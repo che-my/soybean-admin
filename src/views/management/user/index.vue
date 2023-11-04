@@ -5,21 +5,21 @@
         <n-space class="pb-12px" justify="space-between">
           <n-space>
             <n-button type="primary" @click="handleAddTable">
-              <icon-ic-round-plus class="mr-4px text-20px" />
+              <svg-icon icon="ic:round-plus" class="mr-4px text-20px" />
               新增
             </n-button>
             <n-button type="error">
-              <icon-ic-round-delete class="mr-4px text-20px" />
+              <svg-icon icon="ic:round-delete" class="mr-4px text-20px" />
               删除
             </n-button>
             <n-button type="success">
-              <icon-uil:export class="mr-4px text-20px" />
+              <svg-icon icon="uil:export" class="mr-4px text-20px" />
               导出Excel
             </n-button>
           </n-space>
           <n-space align="center" :size="18">
             <n-button size="small" type="primary" @click="getTableData">
-              <icon-mdi-refresh class="mr-4px text-16px" :class="{ 'animate-spin': loading }" />
+              <svg-icon icon="mdi:refresh" class="mr-4px text-16px" :class="{ 'animate-spin': loading }" />
               刷新表格
             </n-button>
             <column-setting v-model:columns="columns" />

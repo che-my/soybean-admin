@@ -1,7 +1,7 @@
 <template>
   <hover-container class="w-40px h-full" :inverted="theme.header.inverted">
     <n-dropdown :options="options" trigger="hover" :value="language" @select="handleSelect">
-      <icon-cil:language class="text-18px outline-transparent" />
+      <svg-icon icon="cil:language" class="text-18px outline-transparent"></svg-icon>
     </n-dropdown>
   </hover-container>
 </template>

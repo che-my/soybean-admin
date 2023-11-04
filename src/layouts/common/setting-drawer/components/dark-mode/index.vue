@@ -4,30 +4,30 @@
     <setting-menu :label="$t('layout.settingDrawer.darkMode')">
       <n-switch :value="theme.darkMode" @update:value="theme.setDarkMode">
         <template #checked>
-          <icon-mdi-white-balance-sunny class="text-14px text-white" />
+          <svg-icon icon="mdi:white-balance-sunny" class="text-14px text-white" />
         </template>
         <template #unchecked>
-          <icon-mdi-moon-waning-crescent class="text-14px text-white" />
+          <svg-icon icon="mdi:moon-waning-crescent" class="text-14px text-white" />
         </template>
       </n-switch>
     </setting-menu>
     <setting-menu :label="$t('layout.settingDrawer.followSystemTheme')">
       <n-switch :value="theme.followSystemTheme" @update:value="theme.setFollowSystemTheme">
         <template #checked>
-          <icon-ic-baseline-do-not-disturb class="text-14px text-white" />
+          <svg-icon icon="ic:baseline-do-not-disturb" class="text-14px text-white" />
         </template>
         <template #unchecked>
-          <icon-ic-round-hdr-auto class="text-14px text-white" />
+          <svg-icon icon="ic:round-hdr-auto" class="text-14px text-white" />
         </template>
       </n-switch>
     </setting-menu>
     <setting-menu :label="$t('layout.settingDrawer.isCustomizeDarkModeTransition')">
       <n-switch :value="theme.isCustomizeDarkModeTransition" @update:value="theme.setIsCustomizeDarkModeTransition">
         <template #checked>
-          <icon-ic-baseline-do-not-disturb class="text-14px text-white" />
+          <svg-icon icon="ic:baseline-do-not-disturb" class="text-14px text-white" />
         </template>
         <template #unchecked>
-          <icon-ic-round-hdr-auto class="text-14px text-white" />
+          <svg-icon icon="ic:round-hdr-auto" class="text-14px text-white" />
         </template>
       </n-switch>
     </setting-menu>

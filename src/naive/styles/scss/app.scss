@@ -1,0 +1,18 @@
+.n-base-icon {
+	box-sizing: initial;
+}
+
+.n-radio-group {
+	.n-radio-button.n-radio-button--checked {
+		background: var(--n-button-text-color-active);
+		color: var(--n-button-color-active);
+	}
+}
+.tox {
+	.tox-menu {
+		@include scrollbar(8px, #979797);
+	}
+	.tox-collection__group {
+		@include scrollbar(8px, #979797);
+	}
+}

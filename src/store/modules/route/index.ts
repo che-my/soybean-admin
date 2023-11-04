@@ -14,6 +14,7 @@ import {
   transformRoutePathToRouteName,
   sortRoutes
 } from '@/utils';
+import type { EntryOptions } from '@/naive/types';
 import { useAppStore } from '../app';
 import { useAuthStore } from '../auth';
 import { useTabStore } from '../tab';
@@ -124,13 +125,17 @@ export const useRouteStore = defineStore('route-store', {
         // home相关处理需要在最后，否则会出现找不到主页404的情况
         this.routeHomeName = data.home;
         this.handleUpdateRootRedirect(data.home);
-
+        this.handleAppHeaderOptions(data.options);
         initHomeTab(data.home, router);
 
         this.isInitAuthRoute = true;
       } else {
         resetAuthStore();
       }
+    },
+    handleAppHeaderOptions(options: EntryOptions) {
+      const app = useAppStore();
+      app.setHeaderOptions(options);
     },
     /** 初始化静态路由 */
     async initStaticRoute() {

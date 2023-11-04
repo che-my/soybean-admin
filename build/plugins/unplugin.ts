@@ -1,6 +1,8 @@
+import debug from 'vite-plugin-debug';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Components from 'unplugin-vue-components/vite';
+import removeConsole from 'vite-plugin-remove-console';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
@@ -16,6 +18,8 @@ export default function unplugin(viteEnv: ImportMetaEnv) {
   const collectionName = VITE_ICON_LOCAL_PREFIX.replace(`${VITE_ICON_PREFIX}-`, '');
 
   return [
+    debug(),
+    removeConsole(),
     Icons({
       compiler: 'vue3',
       customCollections: {

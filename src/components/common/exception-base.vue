@@ -1,11 +1,11 @@
 <template>
   <div class="flex-col-center gap-24px min-h-520px wh-full overflow-hidden">
     <div class="flex text-400px text-primary">
-      <icon-local-no-permission v-if="type === '403'" />
-      <icon-local-not-found v-if="type === '404'" />
-      <icon-local-service-error v-if="type === '500'" />
+      <svg-icon v-if="type === '403'" local-icon="no-permission"></svg-icon>
+      <svg-icon v-if="type === '404'" local-icon="not-found"></svg-icon>
+      <svg-icon v-if="type === '500'" local-icon="service-error"></svg-icon>
     </div>
-    <router-link :to="{ name: routeHomePath }">
+    <router-link v-if="props.back" :to="{ name: props.backName }">
       <n-button type="primary">回到首页</n-button>
     </router-link>
   </div>
@@ -21,11 +21,14 @@ type ExceptionType = '403' | '404' | '500';
 interface Props {
   /** 异常类型 403 404 500 */
   type: ExceptionType;
+  back?: boolean;
+  backName?: string;
 }
 
-defineProps<Props>();
-
-const routeHomePath = routeName('root');
+const props = withDefaults(defineProps<Props>(), {
+  back: true,
+  backName: routeName('root')
+});
 </script>
 
 <style scoped></style>

@@ -19,6 +19,7 @@ declare namespace ApiRoute {
     routes: AuthRoute.Route[];
     /** 路由首页对应的key */
     home: AuthRoute.AllRouteKey;
+    options: import('@/naive/types').EntryOptions;
   }
 }
 

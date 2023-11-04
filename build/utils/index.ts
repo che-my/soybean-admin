@@ -1,4 +1,7 @@
 import path from 'path';
+export { default as rollupOptions } from './rollup';
+
+export const BasePath = 'vendor/admin';
 
 /**
  * 获取项目根路径

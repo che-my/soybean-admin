@@ -1,6 +1,6 @@
 <template>
-  <icon-local-logo-fill v-if="fill" />
-  <icon-local-logo v-else />
+  <svg-icon v-if="fill" local-icon="logo-fill"></svg-icon>
+  <svg-icon v-else local-icon="logo"></svg-icon>
 </template>
 
 <script lang="ts" setup>

@@ -1,6 +1,7 @@
 import type { RouteComponent } from 'vue-router';
 import { BasicLayout, BlankLayout } from '@/layouts';
 import { views } from '@/views';
+import { createVueRender } from '@/naive/utils';
 import { isFunction } from '../common';
 
 type Lazy<T> = () => Promise<T>;
@@ -29,7 +30,8 @@ export function getLayoutComponent(layoutType: UnionKey.LayoutComponentType) {
  */
 export function getViewComponent(routeKey: AuthRoute.LastDegreeRouteKey) {
   if (!views[routeKey]) {
-    throw new Error(`路由“${routeKey}”没有对应的组件文件！`);
+    return createVueRender(routeKey);
+    // throw new Error(`路由“${routeKey}”没有对应的组件文件！`);
   }
   return setViewComponentName(views[routeKey], routeKey);
 }
