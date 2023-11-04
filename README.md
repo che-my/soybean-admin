@@ -7,10 +7,10 @@
 
 ## 注意
 
-Soybean Admin 正在重构，重构后的版本为v1.0，变更点如下:
+Soybean Admin 正在重构，重构后的版本为 v1.0，变更点如下:
 
 - 采用基于 pnpm 的 monorepo 管理项目
-- 第三方 soybeanjs 的工具库直接抽离到项目中(ElegantRouter除外)，不再作为依赖
+- 第三方 soybeanjs 的工具库直接抽离到项目中(ElegantRouter 除外)，不再作为依赖
 - 采用全新的路由插件 [ElegantRouter](https://github.com/soybeanjs/elegant-router)
 - 使用基于 [ApiFox](https://apifox.com/) 的远程 mock 代替本地 mock
 - 基于现有路由插件迁移至新路由插件的指南
@@ -18,13 +18,13 @@ Soybean Admin 正在重构，重构后的版本为v1.0，变更点如下:
 - 项目的 main 分支保留系统核心部分，示例页面和无关核心的插件移至 example 分支
 - 完整 1.0 版本的文档
 
-> 1.0版本仍然采用 NaiveUI
+> 1.0 版本仍然采用 NaiveUI
 
 > 同时推出需要商业授权的 AntDesignVue 版本 和 ElementPlus 版本
 
 全新收费版的 Elegant Admin 会同时进行开发，特性如下:
 
-- 与UI框架无关的核心架子，基础组件由基于UnoCSS实现的组件提供，可以对接不同的UI框架
+- 与 UI 框架无关的核心架子，基础组件由基于 UnoCSS 实现的组件提供，可以对接不同的 UI 框架
 - 更丰富的主题配置及系统主题定制私有化
 
 ## 简介
