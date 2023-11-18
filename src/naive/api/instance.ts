@@ -13,7 +13,7 @@ import {
   transformRequestData
 } from '@/utils';
 import { handleRefreshToken } from '@/service/request/helpers';
-import { AsyncErrorPage } from '@/naive/utils';
+import { ErrorIframe } from '@/naive/components';
 import { handleResponse } from '@/naive/api/response';
 import ExceptionBase from '@/components/common/exception-base.vue';
 
@@ -129,7 +129,7 @@ export default class CustomAxiosInstance {
         if (response?.status === 401) {
           const error = handleAxiosError(axiosError);
           window.$message?.error(error.msg);
-          toLogin('pwd-login');
+          toLogin('index');
           return handleServiceResult(error, null);
         } else if (response?.status === 419) {
           fetchCsrfCookie().then(() => {
@@ -142,7 +142,7 @@ export default class CustomAxiosInstance {
           if (response?.status === 500) {
             window.$dialog?.error({
               title: '500报错信息！',
-              content: () => h(AsyncErrorPage, { content: request.responseText }),
+              content: () => h(ErrorIframe, { content: request.responseText }),
               style: 'width:80%'
             });
             return Promise.reject(response);
@@ -157,7 +157,7 @@ export default class CustomAxiosInstance {
           console.error(response);
           window.$dialog?.error({
             title: '报错信息！',
-            content: () => h(AsyncErrorPage, { content: request.responseText }),
+            content: () => h(ErrorIframe, { content: request.responseText }),
             style: 'width:50%; height:500px'
           });
           return Promise.reject(response);

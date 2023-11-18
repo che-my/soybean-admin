@@ -1,2 +1,2 @@
-import ErrorIframe from './ErrorIframe.vue';
-export { ErrorIframe };
+import { defineAsyncComponent } from 'vue';
+export const ErrorIframe = defineAsyncComponent(() => import('./error-iframe.vue'));

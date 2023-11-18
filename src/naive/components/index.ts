@@ -1,3 +1,4 @@
+export * from './async';
 export * from './audios';
 export * from './common';
 export * from './errors';
@@ -6,6 +7,5 @@ export * from './render';
 export * from './sfc';
 export * from './tables';
 export * from './uploads';
-export * from './icons';
 export * from './editor';
 export * from './maps';

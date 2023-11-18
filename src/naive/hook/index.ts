@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import * as store from '@/store';
-import { useRouterPush, useEcharts, useIconRender, usePermission } from '@/composables';
+import { useRouterPush, useIconRender, usePermission } from '@/composables';
 import * as $hooks from '@/hooks';
 import * as $utils from '@/utils';
-import { $event, createVueRender, uuid } from '@/naive/utils';
+import { $event, uuid } from '@/naive/utils';
 import { request, hookRequest } from '@/naive/api';
 import useAnime from './useAnime';
 import useCopy from './useCopy';
@@ -28,12 +28,10 @@ export const useScope = (): Scope => {
 
   const $tools = {
     uuid,
-    useEcharts,
     useAnime,
     useCopy,
     iconRender,
     hasPermission,
-    createVueRender,
     ...useRouterPush(false)
   };
 

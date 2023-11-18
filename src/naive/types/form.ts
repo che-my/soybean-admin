@@ -12,7 +12,7 @@ export interface FormInject {
   data: object;
   updateFormRef(formRef: FormInst | undefined): void;
   onReset(): Promise<void>;
-  onSubmit(e: Event): Promise<void>;
+  onSubmit(e: Event): Promise<object>;
 }
 
 export interface BaseFormProps {

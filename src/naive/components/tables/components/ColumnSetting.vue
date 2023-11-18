@@ -33,7 +33,7 @@
 import { computed, onMounted, ref, unref, watch } from 'vue';
 import type { TableInject, TableColumn } from '@/naive/types';
 import { injectTable } from '@/naive/factory';
-import { VueDraggable } from '../../common';
+import { VueDraggable } from '@/naive/components';
 interface Props {
   tableKey: string;
 }

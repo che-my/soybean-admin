@@ -1,8 +1,3 @@
-// @ts-ignore
-import Editor from './Editor.vue';
-// @ts-ignore
-import Markdown from './Markdown.vue';
-// @ts-ignore
-import JsonEditor from './JsonEditor.vue';
-
-export { Editor, Markdown, JsonEditor };
+import { defineAsyncComponent } from 'vue';
+export const Editor = defineAsyncComponent(() => import('./editor.vue'));
+export const Markdown = defineAsyncComponent(() => import('./markdown.vue'));

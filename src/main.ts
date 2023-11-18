@@ -1,6 +1,5 @@
 import SoybeanAdmin from '@/admin';
-// eslint-disable-next-line default-param-last
-async function appRender(dom = '#app', callback?: ADMIN.AppCallback) {
+async function appRender(dom = '#app', callback: ADMIN.AppCallback | undefined = undefined) {
   await new SoybeanAdmin(callback).render(dom);
 }
 

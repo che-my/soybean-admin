@@ -1,6 +1,6 @@
-import UploadManager from './UploadManager.vue';
-import UploadFile from './UploadFile.vue';
-import UploadImage from './UploadImage.vue';
-import UploadDragger from './UploadDragger.vue';
+import { defineAsyncComponent } from 'vue';
 
-export { UploadManager, UploadFile, UploadImage, UploadDragger };
+export const UploadManager = defineAsyncComponent(() => import('./upload-manager.vue'));
+export const UploadDragger = defineAsyncComponent(() => import('./upload-dragger.vue'));
+export const UploadFile = defineAsyncComponent(() => import('./upload-file.vue'));
+export const UploadImage = defineAsyncComponent(() => import('./upload-image.vue'));

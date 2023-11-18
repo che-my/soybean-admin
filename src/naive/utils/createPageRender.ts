@@ -1,10 +1,9 @@
 import { defineComponent, h, onMounted, reactive, ref, unref } from 'vue';
 import { useRoute } from 'vue-router';
-import { NEl } from 'naive-ui';
 import { request } from '@/naive/api';
-import ExceptionBase from '@/components/common/exception-base.vue';
-import { AsyncVueRender } from '@/naive/utils';
+import { VueRender } from '@/naive/components';
 import type { EntryOptions } from '@/naive/types';
+import ExceptionBase from '@/components/common/exception-base.vue';
 import PageLoading from './PageLoading';
 
 export function createVueRender(name: string, api = '') {
@@ -39,15 +38,13 @@ export function createVueRender(name: string, api = '') {
       });
 
       const renderContent = () => {
-        return unref(optionsKey)
-          ? h(AsyncVueRender, { options: unref(options), key: unref(optionsKey) })
-          : h(PageLoading);
+        return unref(optionsKey) ? h(VueRender, { options: unref(options), key: unref(optionsKey) }) : h(PageLoading);
       };
 
       return () => {
         switch (unref(status)) {
           case 200:
-            return h(NEl, { class: 'wh-full' }, renderContent);
+            return renderContent();
           case 403:
             return h(ExceptionBase, { type: '403' });
           case 404:

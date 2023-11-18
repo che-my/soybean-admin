@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { loadApiComponent } from '@/naive/utils';
+import { loadApiComponent } from '@/naive/utils/vue-sfc-loader';
 
 defineOptions({
   name: 'SfcApi',
@@ -16,15 +16,7 @@ const comp = loadApiComponent(props.api);
 </script>
 
 <template>
-  <div class="sfc-api">
-    <component :is="comp" :value="modelValue" v-bind="$attrs">
-      <slot></slot>
-    </component>
-  </div>
+  <component :is="comp" class="sfc-api" :value="modelValue" v-bind="$attrs">
+    <slot></slot>
+  </component>
 </template>
-
-<style lang="scss" scoped>
-.sfc-api {
-  width: initial;
-}
-</style>

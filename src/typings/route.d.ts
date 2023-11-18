@@ -2,6 +2,8 @@ declare namespace AuthRoute {
   /** 根路由路径 */
   type RootRoutePath = '/';
 
+  type LoginPath = 'login';
+
   /** 捕获无效路由的路由路径 */
   type NotFoundRoutePath = '/:pathMatch(.*)*';
 
@@ -13,7 +15,7 @@ declare namespace AuthRoute {
 
   type LastDegreeRouteKey = PageRoute.LastDegreeRouteKey;
 
-  type AllRouteKey = RouteKey | RootRouteKey | NotFoundRouteKey;
+  type AllRouteKey = RouteKey | RootRouteKey | LoginPath | NotFoundRouteKey;
 
   /** 路由路径 */
   type RoutePath<K extends AllRouteKey = AllRouteKey> = AuthRouteUtils.GetRoutePath<K>;

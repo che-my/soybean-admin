@@ -7,8 +7,8 @@ defineProps<Props>();
 </script>
 
 <template>
-  <div class="form-help flex-center">
-    <n-icon size="18"><svg-icon icon="mdi:help-circle-outline"></svg-icon></n-icon>
+  <div class="form-help flex-start">
+    <n-icon class="py-1" size="18"><svg-icon icon="mdi:help-circle-outline"></svg-icon></n-icon>
     <span class="pl-2 py-1">{{ help }}</span>
   </div>
 </template>

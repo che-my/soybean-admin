@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 import type { Socket } from 'socket.io-client';
-import { useAppStore } from '../store';
+import { useAppStore } from '@/store';
 
 type ListenEvents = {
   update: (id: string, data: { name: string; age: number }) => void;

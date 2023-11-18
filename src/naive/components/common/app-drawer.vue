@@ -49,6 +49,13 @@ const async = ref<boolean>(props.async || false);
 const contentAttrs = computed(() => props.contentAttrs);
 const randomClass = `app-drawer-${uuid(8)}`;
 
+watch(
+  () => unref(modelValue),
+  () => {
+    showDrawer.value = unref(modelValue);
+  }
+);
+
 onMounted(() => {
   $event.on(unref(drawerKey), value => {
     showDrawer.value = Boolean(value);
@@ -95,3 +102,5 @@ defineExpose({
   showDrawer
 });
 </script>
+
+<style scoped></style>

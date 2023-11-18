@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas ref="domRef" width="152" height="40" class="cursor-pointer" @click="getImgCode"></canvas>
-  </div>
+  <canvas ref="domRef" :width="width" :height="height" class="cursor-pointer" @click="getImgCode"></canvas>
 </template>
 
 <script setup lang="ts">
@@ -12,10 +10,14 @@ defineOptions({ name: 'ImageVerify' });
 
 interface Props {
   code?: string;
+  width?: number | string;
+  height?: number | string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  code: ''
+  code: '',
+  width: 152,
+  height: 40
 });
 
 interface Emits {

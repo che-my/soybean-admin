@@ -36,7 +36,9 @@ const onClick = (e: any) => {
   if (eventType == 'click') {
     emit('click', e);
   } else if (eventType == 'modal' || eventType == 'drawer') {
-    unref(eventKey) && $event.emit(unref(eventKey), unref(eventValue));
+    if (unref(eventKey)) {
+      $event.emit(unref(eventKey), unref(eventValue));
+    }
   }
 };
 </script>

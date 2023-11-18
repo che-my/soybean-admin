@@ -44,7 +44,7 @@ export class FormFactory {
     }
     this.state.onSubmit = async (e: Event | null = null) => {
       e?.preventDefault();
-      this.submitRequest();
+      return this.submitRequest();
     };
     this.state.onReset = async () => {
       Object.assign(this.state.data, oldModel);
@@ -68,17 +68,31 @@ export class FormFactory {
     );
   }
 
-  private submitRequest() {
-    let isBool = true;
-    this.$emit('beforeSubmit', this.state, (bool: boolean) => (isBool = bool));
-    if (!isBool) return false;
-    this.state.formRef
-      ?.validate()
-      .then(() => this.saveForm())
-      .catch((error: any) => {
-        console.log(error);
-        this.$emit('error', error);
-      });
+  private submitRequest(): Promise<object> {
+    return new Promise((resolve, reject) => {
+      let isBool = true;
+      this.$emit('beforeSubmit', this.state, (bool: boolean) => (isBool = bool));
+      if (!isBool) {
+        reject(new Error('error'));
+      } else {
+        this.state.formRef
+          ?.validate()
+          .then(() => {
+            this.saveForm();
+            resolve(this.state.data);
+          })
+          .catch((error: any) => {
+            console.log(error);
+            this.$emit('error', error);
+            reject(error);
+          });
+      }
+    });
+    // .then(() => this.saveForm())
+    // .catch((error: any) => {
+    //   console.log(error);
+    //   this.$emit('error', error);
+    // });
   }
 
   private getData() {

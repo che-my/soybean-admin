@@ -12,7 +12,6 @@ const FastNaive = {
     app.use(Tmap);
     const modules = await import('./components');
     Object.keys({ ...modules }).forEach((key: string) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const comp = modules[key];
       app.component(key, comp);

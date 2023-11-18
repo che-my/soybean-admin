@@ -59,7 +59,7 @@ import type { ImageInst } from 'naive-ui/es/image/src/Image';
 import { uuid } from '@/naive/utils';
 import { AppModal, AppAction } from '../common';
 import UploadDriver from './components/UploadDriver.vue';
-import UploadManager from './UploadManager.vue';
+import UploadManager from './upload-manager.vue';
 
 defineOptions({ name: 'UploadDragger', inheritAttrs: false });
 

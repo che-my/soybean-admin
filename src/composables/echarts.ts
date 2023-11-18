@@ -169,6 +169,9 @@ export function useEcharts(
   });
 
   return {
-    domRef
+    chart,
+    domRef,
+    resize,
+    destroy
   };
 }

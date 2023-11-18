@@ -7,7 +7,7 @@ interface Window {
   $message?: import('naive-ui').MessageProviderInst;
   $notification?: import('naive-ui').NotificationProviderInst;
   'vue3-sfc-loader': typeof import('vue3-sfc-loader/dist/types/vue3/index');
-  appRender(dom: string, callback?: ADMIN.AppCallback): Promise<void>;
+  appRender(dom: string, callback: ADMIN.AppCallback | undefined): Promise<void>;
   useScope(): import('@/naive/hook').Scope;
 }
 
@@ -37,3 +37,6 @@ declare namespace ADMIN {
 
 /** 构建时间 */
 declare const PROJECT_BUILD_TIME: string;
+
+declare module 'rollup-plugin-external-globals';
+declare module '@matpool/vue-json-view';

@@ -14,7 +14,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   help: undefined,
   helpColor: undefined,
-  vertical: false
+  vertical: true
 });
 const attrs = useAttrs();
 const slots = useSlots();
@@ -22,10 +22,13 @@ const vertical = computed(() => props.vertical || false);
 const align = computed<alignType>(() => (unref(vertical) ? 'flex-start' : 'center'));
 const themeVars = useThemeVars();
 const helpColor = computed<string>(() => props.helpColor || themeVars.value.textColor3);
+const noLabel = computed<string>(() =>
+  attrs.label != undefined || unref(slots).label != undefined ? '' : 'n-form-item--no-label'
+);
 </script>
 
 <template>
-  <n-form-item v-bind="attrs">
+  <n-form-item :class="noLabel" v-bind="attrs">
     <template v-if="slots.feedback" #feedback>
       <slot name="feedback"></slot>
     </template>
@@ -33,6 +36,7 @@ const helpColor = computed<string>(() => props.helpColor || themeVars.value.text
       <slot name="label"></slot>
     </template>
     <n-space
+      v-if="help || slots.help"
       class="form-field"
       :align="align"
       :vertical="vertical"
@@ -41,15 +45,16 @@ const helpColor = computed<string>(() => props.helpColor || themeVars.value.text
     >
       <slot></slot>
       <slot name="help">
-        <form-help v-if="help" :help="help"></form-help>
+        <form-help :help="help"></form-help>
       </slot>
     </n-space>
+    <slot v-else></slot>
   </n-form-item>
 </template>
 <style></style>
 <style lang="scss" scoped>
 .form-field {
   box-sizing: border-box;
-  width: inherit;
+  width: 100%;
 }
 </style>

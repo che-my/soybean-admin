@@ -2,11 +2,10 @@ import { unref, nextTick } from 'vue';
 import { defineStore } from 'pinia';
 import { router } from '@/router';
 import { fetchLogin, fetchUserInfo } from '@/service';
+import { useRouteStore } from '@/store';
 import { useRouterPush } from '@/composables';
 import { localStg } from '@/utils';
-import { $t } from '@/locales';
 import { useTabStore } from '../tab';
-import { useRouteStore } from '../route';
 import { getToken, getUserInfo, clearAuthStorage } from './helpers';
 
 interface AuthState {
@@ -37,7 +36,7 @@ export const useAuthStore = defineStore('auth-store', {
       const { resetTabStore } = useTabStore();
       const { resetRouteStore } = useRouteStore();
       const route = unref(router.currentRoute);
-
+      console.log(route);
       clearAuthStorage();
       this.$reset();
 
@@ -65,15 +64,6 @@ export const useAuthStore = defineStore('auth-store', {
 
         // 跳转登录后的地址
         toLoginRedirect();
-
-        // 登录成功弹出欢迎提示
-        if (route.isInitAuthRoute) {
-          window.$notification?.success({
-            title: $t('page.login.common.loginSuccess'),
-            content: $t('page.login.common.welcomeBack', { userName: this.userInfo.userName }),
-            duration: 3000
-          });
-        }
 
         return;
       }

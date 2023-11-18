@@ -19,12 +19,12 @@
     </n-grid-item>
     <n-grid-item span="0:24 640:24 1024:10">
       <n-card :bordered="false" class="rounded-8px shadow-sm">
-        <div ref="lineRef" class="w-full h-360px"></div>
+        <app-echart :options="options" class="w-full h-360px"></app-echart>
       </n-card>
     </n-grid-item>
     <n-grid-item span="0:24 640:24 1024:8">
       <n-card :bordered="false" class="rounded-8px shadow-sm">
-        <div ref="pieRef" class="w-full h-360px"></div>
+        <app-echart :options="pieOptions" class="w-full h-360px"></app-echart>
       </n-card>
     </n-grid-item>
   </n-grid>
@@ -32,12 +32,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { Ref } from 'vue';
-import { type ECOption, useEcharts } from '@/composables';
-
+import { AppEchart } from '@/naive/components';
 defineOptions({ name: 'DashboardAnalysisTopCard' });
-
-const lineOptions = ref<ECOption>({
+const options = ref<any>({
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -130,10 +127,9 @@ const lineOptions = ref<ECOption>({
       data: [2208, 2016, 2916, 4512, 8281, 2008, 1963, 2367, 2956, 678]
     }
   ]
-}) as Ref<ECOption>;
-const { domRef: lineRef } = useEcharts(lineOptions);
+});
 
-const pieOptions = ref<ECOption>({
+const pieOptions = ref<any>({
   tooltip: {
     trigger: 'item'
   },
@@ -177,8 +173,7 @@ const pieOptions = ref<ECOption>({
       ]
     }
   ]
-}) as Ref<ECOption>;
-const { domRef: pieRef } = useEcharts(pieOptions);
+});
 </script>
 
 <style scoped></style>

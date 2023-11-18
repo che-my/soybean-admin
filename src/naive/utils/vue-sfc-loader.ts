@@ -1,7 +1,8 @@
 import * as Vue from 'vue';
 import { defineAsyncComponent, markRaw } from 'vue';
 import type { AsyncComponentLoader } from '@vue/runtime-core/dist/runtime-core';
-import type { Options } from 'vue3-sfc-loader/dist/types/vue3/types';
+// @ts-ignore
+import { loadModule } from 'vue3-sfc-loader';
 import { request } from '@/naive/api';
 import PageLoading from './PageLoading';
 
@@ -13,14 +14,14 @@ const addStyle = (textContent: string): void => {
 };
 
 const loadMarkRawComponent = (file: string, options: any = {}) => {
-  const moduleOptions: Options = {
+  const moduleOptions: any = {
     moduleCache: {
       vue: Vue
     },
     addStyle,
     ...options
   };
-  const Loader: AsyncComponentLoader = () => window['vue3-sfc-loader']?.loadModule(file, moduleOptions);
+  const Loader: AsyncComponentLoader = () => loadModule(file, moduleOptions);
   return markRaw(
     defineAsyncComponent({
       loader: Loader,

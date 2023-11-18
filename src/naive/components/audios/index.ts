@@ -1,2 +1,2 @@
-import XgPlayer from './XgPlayer.vue';
-export { XgPlayer };
+import { defineAsyncComponent } from 'vue';
+export const XgPlayer = defineAsyncComponent(() => import('./xg-player.vue'));

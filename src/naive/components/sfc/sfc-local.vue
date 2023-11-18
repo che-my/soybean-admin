@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { loadSfcComponent } from '@/naive/utils';
+import { loadSfcComponent } from '@/naive/utils/vue-sfc-loader';
 
 defineOptions({
   name: 'SfcLocal',
@@ -17,15 +17,7 @@ const comp = loadSfcComponent(props);
 </script>
 
 <template>
-  <div class="sfc-local">
-    <component :is="comp" :value="modelValue" v-bind="$attrs">
-      <slot></slot>
-    </component>
-  </div>
+  <component :is="comp" class="sfc-local" :value="modelValue" v-bind="$attrs">
+    <slot></slot>
+  </component>
 </template>
-
-<style lang="scss" scoped>
-.sfc-local {
-  width: initial;
-}
-</style>

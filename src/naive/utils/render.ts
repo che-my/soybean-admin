@@ -15,18 +15,9 @@ export const createHtmlComponent = () => {
     defineComponent({
       componentName: 'Html',
       props: {
-        tag: {
-          type: String,
-          default: 'div'
-        },
-        class: {
-          type: [String, Array<string>],
-          default: ''
-        },
-        value: {
-          type: [String, Number],
-          default: ''
-        }
+        tag: { type: String, default: 'div' },
+        class: { type: [String, Array<string>], default: '' },
+        value: { type: [String, Number], default: '' }
       },
       setup(props: HtmlProp, { attrs, slots }: any) {
         const content = props.value ? props.value : slots;
@@ -57,16 +48,41 @@ export const handleMaps = (maps: Records[] | undefined) => {
   return data;
 };
 
+const search = (scripts: any, url: string) => {
+  let isTrue = true;
+  for (let index = 0; index < scripts.length; index++) {
+    if (scripts.item(index).src == url) {
+      isTrue = false;
+    }
+  }
+  return isTrue;
+};
+
+const buildAssets = (urls: string[], scripts: any, callback: (url: string) => void) => {
+  urls.forEach((url: string) => {
+    if (scripts.length > 0) {
+      if (search(scripts, url)) {
+        callback(url);
+      }
+    } else {
+      callback(url);
+    }
+  });
+};
+
 export const handleRender = async (options: EntryOptions) => {
   const packages: Records = {};
   const assets: Asset[] = [];
   const maps: Records = handleMaps(options.maps);
   options.packages?.forEach(({ package: _package, library, urls, renderUrls, maps: _maps }: Records) => {
     packages[_package] = library;
+    const scripts = document.getElementsByTagName('script');
     if (renderUrls) {
       assets.push(renderUrls);
     } else if (urls) {
-      assets.push(urls);
+      buildAssets(urls, scripts, (url: string) => {
+        assets.push(url);
+      });
     }
     Object.assign(maps, handleMaps(_maps));
   });

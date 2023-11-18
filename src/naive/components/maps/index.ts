@@ -1,4 +1,2 @@
-// @ts-ignore
-import MapAddress from './MapAddress.vue';
-
-export { MapAddress };
+import { defineAsyncComponent } from 'vue';
+export const MapAddress = defineAsyncComponent(() => import('./MapAddress.vue'));

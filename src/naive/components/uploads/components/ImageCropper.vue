@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import 'vue-cropper/dist/index.css';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { VueCropper } from 'vue-cropper';
 import { AppModal } from '../../common';
 interface Props {
@@ -42,9 +42,6 @@ const clearCrop = () => {
 const onImgLoad = () => {
   console.log(cropperRef.value);
 };
-onMounted(() => {
-  console.log(cropperRef.value);
-});
 </script>
 <template>
   <app-modal v-model:show="modelShow" title="图片剪裁" width="800px" :fullscreen="false">

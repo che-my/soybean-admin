@@ -1,3 +1,28 @@
+.vue-render {
+	position: relative;
+	height: inherit;
+	width: inherit;
+
+	.debug-icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 99;
+		cursor: pointer;
+	}
+}
+
+.n-menu:not(.n-menu--collapsed)
+	.n-menu-item-content.n-menu-item-content--selected:before,
+.n-menu:not(.n-menu--collapsed) .n-menu-item-content:hover:before {
+	border-left: 4px solid var(--n-item-text-color-active);
+}
+
+.n-menu:not(.n-menu--collapsed) .n-menu-item-content:before {
+	left: 5px;
+	right: 5px;
+}
+
 .n-base-icon {
 	box-sizing: initial;
 }
@@ -8,6 +33,12 @@
 		color: var(--n-button-color-active);
 	}
 }
+.sfc-local,
+.sfc-api {
+	width: inherit;
+	height: inherit;
+}
+
 .tox {
 	.tox-menu {
 		@include scrollbar(8px, #979797);
@@ -15,4 +46,9 @@
 	.tox-collection__group {
 		@include scrollbar(8px, #979797);
 	}
+}
+
+pre[class*="language-"] {
+	margin: 0 !important;
+	@include scrollbar(8px, #979797);
 }

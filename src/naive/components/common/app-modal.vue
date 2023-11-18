@@ -1,6 +1,6 @@
 <template>
   <n-modal
-    v-model:show="modelValue"
+    v-model:show="showModal"
     class="app-modal"
     preset="card"
     transform-origin="mouse"
@@ -88,7 +88,8 @@ const isEvent = computed(() => props.modalKey);
 const modalKey = ref(props.modalKey || `showModal_${uuid(8)}`);
 const width = computed(() => handleString(props.width));
 const modalTop = computed(() => handleString(props.top) || 0);
-const modelValue = defineModel<boolean>();
+const modelValue = computed(() => props.modelValue || false);
+const showModal = ref<boolean>(props.modelValue || false);
 const async = ref(props.async || false);
 const randomClass = `app-model-${uuid(8)}`;
 
@@ -98,17 +99,29 @@ const className = computed(() => {
   return isFullscreen.value ? `${randomClass} is-fullscreen` : randomClass;
 });
 
+watch(
+  () => unref(modelValue),
+  () => {
+    showModal.value = unref(modelValue);
+  }
+);
+
 onMounted(() => {
   if (isEvent.value) {
-    $event.on(unref(modalKey), value => {
-      modelValue.value = Boolean(value);
+    $event.on(unref(modalKey), (value: any) => {
+      showModal.value = Boolean(value);
+      emit('change', showModal.value);
+      emit('update:modelValue', showModal.value);
+      if (!showModal.value) {
+        isFullscreen.value = false;
+      }
     });
   }
 });
 
 const onUpdateShow = (value: boolean) => {
   emit('change', value);
-  modelValue.value = value;
+  emit('update:modelValue', value);
   if (isEvent.value) {
     $event.emit(unref(modalKey), value);
   }
@@ -165,3 +178,5 @@ defineExpose({
   modelValue
 });
 </script>
+
+<style scoped></style>

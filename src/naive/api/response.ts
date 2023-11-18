@@ -1,5 +1,5 @@
 import { h } from 'vue';
-import { AsyncVueRender } from '@/naive/utils';
+import { VueRender } from '@/naive/components';
 
 interface Response {
   code: number;
@@ -49,7 +49,7 @@ export const handleResponse = (result: Response) => {
       title: result.message,
       maskClosable: false,
       ...options,
-      content: () => h(AsyncVueRender, { options: content })
+      content: () => h(VueRender, { options: content })
     });
   }
 };

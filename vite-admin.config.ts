@@ -45,13 +45,14 @@ export default defineConfig(configEnv => {
       proxy: createViteProxy(isOpenProxy, envConfig)
     },
     optimizeDeps: {
-      include: ['@better-scroll/core', 'echarts', 'swiper', 'swiper/vue', 'vditor', 'xgplayer']
+      include: ['@better-scroll/core', 'echarts', 'vditor', 'xgplayer']
     },
     build: {
-      manifest: 'manifest-assets.json',
+      manifest: 'manifest-admin.json',
       assetsDir: `./${BasePath}/assets`,
       reportCompressedSize: false,
-      sourcemap: viteEnv.VITE_SERVICE_ENV === 'prod',
+      // sourcemap: viteEnv.VITE_SERVICE_ENV === 'prod',
+      sourcemap: false,
       commonjsOptions: {
         ignoreTryCatch: false
       },

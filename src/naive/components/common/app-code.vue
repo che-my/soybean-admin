@@ -43,9 +43,3 @@ onMounted(() => {
   Prism.highlightAll();
 });
 </script>
-
-<style scoped>
-pre {
-  margin: 0;
-}
-</style>

@@ -26,8 +26,8 @@
 import { computed } from 'vue';
 import { useForm, formProps, FormEmitTypes } from '@/naive/factory';
 import type { BaseFormProps } from '@/naive/types';
-import AppModal from '../common/AppModal.vue';
-import AppDrawer from '../common/AppDrawer.vue';
+import AppModal from '../common/app-modal.vue';
+import AppDrawer from '../common/app-drawer.vue';
 import FormContent from './components/FormContent.vue';
 import FormFooter from './components/FormFooter.vue';
 defineOptions({ name: 'AppForm', inheritAttrs: false });
